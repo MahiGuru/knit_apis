@@ -19,11 +19,11 @@ class ProductListViewSet(viewsets.ModelViewSet):
     serializer_class = ProductListSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     
-    search_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'stitch', 'stitch_type']
+    search_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'category', 'sub_category']
     
     pagination_class = LinkSetPagination
 
-    filter_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'stitch', 'stitch_type']
+    filter_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'category', 'sub_category']
     parser_classes = (JSONParser, FormParser, MultiPartParser, FileUploadParser) # set parsers if not set in settings. Edited
     
 
@@ -32,11 +32,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     
-    search_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'stitch', 'stitch_type']
+    search_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'category', 'sub_category']
     
     pagination_class = LinkSetPagination
 
-    filter_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'stitch', 'stitch_type']
+    filter_fields = ['id', 'title','description', 'quantity', 'price', 'colors', 'sizes', 'offers', 'category', 'sub_category']
     parser_classes = (JSONParser, FormParser, MultiPartParser, FileUploadParser) # set parsers if not set in settings. Edited
     
     def create(self, request, *args, **kwargs):
@@ -81,7 +81,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         product['description'] = product_input.get('description')
         product['quantity'] = product_input.get('quantity')
         product['price'] = product_input.get('price')
-        product['in_stock'] = product_input.get('in_stock')
+        product['availability'] = product_input.get('availability')
         product['user'] = product_input.get('user')
 
         # Many to Many fields
