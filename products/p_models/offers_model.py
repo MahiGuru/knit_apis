@@ -12,7 +12,7 @@ class OfferModel(models.Model):
     class Meta:
         db_table = 'offers'
         managed = True
-        verbose_name = 'Product Offers'
+        verbose_name = 'Offer'
     
     def __str__(self):
         return self.code

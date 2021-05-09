@@ -7,7 +7,7 @@ class Brand(TimestampedModel):
     name = models.CharField(max_length=40, default=None)
     code = models.CharField(max_length=40, default=None)
     description = models.CharField(max_length=120, default=None)
-    images = models.ForeignKey(PImage, on_delete=models.CASCADE, blank=False, default=None)
+    images = models.ManyToManyField(PImage, blank=True, default=None)
     
     class Meta:
         db_table = 'brands'
@@ -22,8 +22,8 @@ class Brand(TimestampedModel):
         
         super().save(*args, **kwargs)
     
-    # def __str__(self):
-    #     return self.code
+    def __str__(self):
+        return self.name
 
 
 

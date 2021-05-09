@@ -6,6 +6,7 @@ class SizeModel(models.Model):
     code= models.CharField(null=True, max_length=30,  blank=True, default=None)
     class Meta:
         db_table = 'sizes'
+        verbose_name = 'Size'
     
     def save(self, *args, **kwargs):
         if not self.size:

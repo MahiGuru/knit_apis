@@ -8,6 +8,7 @@ from ..p_models.image_model import PImage
 from ..p_models.category_model import Category
 from ..p_models.sub_category_model import SubCategory
 
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
     errors = {}
 
     def get_images(self, obj):
-        serializer = KImageSerializer(obj.images, many=True)
+        serializer = ImageSerializer(obj.images, many=False)
         return serializer.data 
     
     class Meta:

@@ -7,8 +7,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter(trailing_slash=False)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', include('products.urls')),
-    path('orders/', include('orders.urls')),
+    path('products/', include('products.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

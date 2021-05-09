@@ -24,9 +24,9 @@ class Product(TimestampedModel):
 
     # Product details
     images = models.ManyToManyField(PImage, blank=True, default=None)
-    offers = models.ForeignKey(OfferModel, on_delete=models.CASCADE, blank=True, null=True)
-    colors = models.ForeignKey(ColorModel, on_delete=models.CASCADE, blank=True, null=True)
-    sizes = models.ForeignKey(SizeModel, on_delete=models.CASCADE, blank=True, null=True)
+    offers = models.ManyToManyField(OfferModel,  blank=True, null=True)
+    colors = models.ManyToManyField(ColorModel,   blank=True, null=True)
+    sizes = models.ManyToManyField(SizeModel, blank=True, null=True)
     
     #Categorys
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
@@ -41,5 +41,5 @@ class Product(TimestampedModel):
         managed = True
     
     def __str__(self):
-        return self.code
+        return self.title
 

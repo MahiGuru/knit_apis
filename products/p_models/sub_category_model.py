@@ -9,7 +9,7 @@ class SubCategory(TimestampedModel):
     code = models.CharField(max_length=50, default=None)
     description = models.CharField(max_length=120, default=None)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False, default=None)
-    images = models.ForeignKey(PImage, on_delete=models.CASCADE,blank=True, default=None)
+    images = models.ForeignKey(PImage, on_delete=models.CASCADE,blank=True, default=None, null=True)
 
     class Meta:
         db_table = 'subcategorys'
@@ -24,6 +24,6 @@ class SubCategory(TimestampedModel):
         
         super().save(*args, **kwargs)
     
-    # def __str__(self):
-    #     return self.code
+    def __str__(self):
+        return self.name
 

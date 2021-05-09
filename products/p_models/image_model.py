@@ -61,6 +61,6 @@ class PImage(models.Model):
 
         super(PImage, self).save()
 
-    # def __str__(self):
-    #     return self.description
+    def __str__(self):
+        return self.description
 

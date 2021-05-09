@@ -1,10 +1,16 @@
 from rest_framework import serializers
 from products.p_models.category_model import Category
-
+from .image_serializer import ImageSerializer
 class CategorySerializer(serializers.ModelSerializer):
+    images_list = serializers.SerializerMethodField(read_only=True)
+    
+    def get_images_list(self, obj):
+        serializer = ImageSerializer(obj.images, many=False)
+        return serializer.data 
+
     class Meta:
         model = Category
-        fields = ('id', 'name', 'code', 'description')
+        fields = ('id', 'name', 'code', 'description', 'images_list')
 
     def validate(self, data):
         if data.get('name'):

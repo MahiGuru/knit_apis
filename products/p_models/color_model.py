@@ -6,6 +6,7 @@ class ColorModel(models.Model):
     code= models.CharField(null=True, max_length=30,  blank=True, default=None)
     class Meta:
         db_table = 'colors'
+        verbose_name = 'color'
     
     def save(self, *args, **kwargs):
         if not self.color:
